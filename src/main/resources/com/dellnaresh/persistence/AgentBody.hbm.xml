@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20/07/2014 3:26:13 PM by Hibernate Tools 3.6.0 -->
+<!-- Generated 20/07/2014 5:05:11 PM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="com.dellnaresh.persistence.AgentBody" table="AGENT_BODY" catalog="mydb">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="assigned"></generator>
         </id>
         <property name="salt" type="string">
             <column name="SALT" length="20" not-null="true" />

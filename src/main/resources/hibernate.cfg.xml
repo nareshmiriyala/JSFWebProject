@@ -9,5 +9,6 @@
     <property name="hibernate.connection.password">root</property>
     <property name="javax.persistence.validation.mode">none</property>
     <mapping resource="com/dellnaresh/persistence/AgentBody.hbm.xml"/>
+    <mapping resource="com/dellnaresh/persistence/AgentAuthToken.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

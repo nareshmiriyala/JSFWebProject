@@ -1,5 +1,5 @@
 package com.dellnaresh.persistence;
-// Generated 20/07/2014 3:26:12 PM by Hibernate Tools 3.6.0
+// Generated 20/07/2014 5:05:11 PM by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -85,7 +85,7 @@ public class AgentBody  implements java.io.Serializable {
      @Id 
 
     
-    @Column(name="ID", unique=true, nullable=false)
+    @Column(name="ID", nullable=false)
     public int getId() {
         return this.id;
     }

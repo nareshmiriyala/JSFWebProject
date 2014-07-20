@@ -6,6 +6,7 @@
 
 package com.dellnaresh.test.persistence;
 
+import com.dellnaresh.persistence.AgentAuthToken;
 import com.dellnaresh.persistence.AgentBody;
 import com.dellnaresh.persistence.NewHibernateUtil;
 import java.util.Date;
@@ -53,7 +54,7 @@ public class HibernateTest {
     // @Test
     // public void hello() {}
     @Test
-    public void testDatabaseConnection(){
+    public void testAgentBodyConnection(){
          System.out.println("Maven + Hibernate + MySQL");
         Session session = util.getSessionFactory().openSession();
  
@@ -70,6 +71,26 @@ public class HibernateTest {
          session.getTransaction().commit();
          
          assertNotNull(agent.getId());
+        
+        
+    }
+    @Test
+    public void testAgentAuthTokenConnection(){
+         System.out.println("Maven + Hibernate + MySQL");
+        Session session = util.getSessionFactory().openSession();
+ 
+        session.beginTransaction();
+        AgentAuthToken token = new AgentAuthToken();
+ 
+         token.setAgentid(123);
+         token.setId(1);
+         token.setToken("6339098");
+         token.setExpiry(new Date());
+         token.setRetryCount(0);
+         token.setType(1);
+         session.getTransaction().commit();
+         
+         assertNotNull(token.getId());
         
         
     }
