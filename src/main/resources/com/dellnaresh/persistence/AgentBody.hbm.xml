@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/07/2014 3:26:13 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.dellnaresh.persistence.AgentBody" table="AGENT_BODY" catalog="mydb">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="salt" type="string">
+            <column name="SALT" length="20" not-null="true" />
+        </property>
+        <property name="createdDate" type="date">
+            <column name="CREATED_DATE" length="10" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="NAME" length="100" />
+        </property>
+        <property name="emailAddress" type="string">
+            <column name="EMAIL_ADDRESS" length="100" />
+        </property>
+        <property name="smsAddress" type="string">
+            <column name="SMS_ADDRESS" length="20" />
+        </property>
+        <property name="language" type="string">
+            <column name="LANGUAGE" length="8" />
+        </property>
+        <property name="status" type="int">
+            <column name="STATUS" not-null="true" />
+        </property>
+        <property name="agentType" type="int">
+            <column name="AGENT_TYPE" not-null="true" />
+        </property>
+        <property name="organisation" type="int">
+            <column name="ORGANISATION" not-null="true" />
+        </property>
+        <property name="dsCommission" type="java.lang.Integer">
+            <column name="DS_COMMISSION" />
+        </property>
+        <property name="posCommission" type="java.lang.Integer">
+            <column name="POS_COMMISSION" />
+        </property>
+        <property name="agentObject" type="string">
+            <column name="AGENT_OBJECT" length="128" />
+        </property>
+        <property name="regTxn" type="java.lang.Integer">
+            <column name="REG_TXN" />
+        </property>
+        <property name="loBalThres" type="java.lang.Integer">
+            <column name="LO_BAL_THRES" />
+        </property>
+        <property name="loBalAmount" type="java.lang.Integer">
+            <column name="LO_BAL_AMOUNT" />
+        </property>
+        <property name="loBalSource" type="string">
+            <column name="LO_BAL_SOURCE" length="64" />
+        </property>
+        <property name="hiBalThres" type="java.lang.Integer">
+            <column name="HI_BAL_THRES" />
+        </property>
+        <property name="hiBalAmount" type="java.lang.Integer">
+            <column name="HI_BAL_AMOUNT" />
+        </property>
+        <property name="hiBalSource" type="string">
+            <column name="HI_BAL_SOURCE" length="64" />
+        </property>
+        <property name="lastAutoCash" type="date">
+            <column name="LAST_AUTO_CASH" length="10" />
+        </property>
+        <property name="ownerAgent" type="java.lang.Integer">
+            <column name="OWNER_AGENT" />
+        </property>
+        <property name="agentCategory" type="string">
+            <column name="AGENT_CATEGORY" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>
