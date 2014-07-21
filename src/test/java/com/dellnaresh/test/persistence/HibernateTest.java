@@ -53,46 +53,46 @@ public class HibernateTest {
     //
     // @Test
     // public void hello() {}
-    @Test
-    public void testAgentBodyConnection(){
-         System.out.println("Maven + Hibernate + MySQL");
-        Session session = util.getSessionFactory().openSession();
- 
-        session.beginTransaction();
-        AgentBody agent = new AgentBody();
- 
-       agent.setId(123);
-       agent.setSalt("admin");
-       agent.setCreatedDate(new Date());
-       agent.setStatus(0);
-       agent.setAgentType(1);
-       agent.setOrganisation(2);
-       session.save(agent);
-         session.getTransaction().commit();
-         
-         assertNotNull(agent.getId());
-        
-        
-    }
-    @Test
-    public void testAgentAuthTokenConnection(){
-         System.out.println("Maven + Hibernate + MySQL");
-        Session session = util.getSessionFactory().openSession();
- 
-        session.beginTransaction();
-        AgentAuthToken token = new AgentAuthToken();
- 
-         token.setAgentid(123);
-         token.setId(1);
-         token.setToken("6339098");
-         token.setExpiry(new Date());
-         token.setRetryCount(0);
-         token.setType(1);
-         session.getTransaction().commit();
-         
-         assertNotNull(token.getId());
-        
-        
-    }
+//    @Test
+//    public void testAgentBodyConnection(){
+//         System.out.println("Maven + Hibernate + MySQL");
+//        Session session = util.getSessionFactory().openSession();
+// 
+//        session.beginTransaction();
+//        AgentBody agent = new AgentBody();
+// 
+//       agent.setId(123);
+//       agent.setSalt("admin");
+//       agent.setCreatedDate(new Date());
+//       agent.setStatus(0);
+//       agent.setAgentType(1);
+//       agent.setOrganisation(2);
+//       session.save(agent);
+//         session.getTransaction().commit();
+//         
+//         assertNotNull(agent.getId());
+//        
+//        
+//    }
+//    @Test
+//    public void testAgentAuthTokenConnection(){
+//         System.out.println("Maven + Hibernate + MySQL");
+//        Session session = util.getSessionFactory().openSession();
+// 
+//        session.beginTransaction();
+//        AgentAuthToken token = new AgentAuthToken();
+// 
+//         token.setAgentid(123);
+//         token.setId(1);
+//         token.setToken("6339098");
+//         token.setExpiry(new Date());
+//         token.setRetryCount(0);
+//         token.setType(1);
+//         session.getTransaction().commit();
+//         
+//         assertNotNull(token.getId());
+//        
+//        
+//    }
     
 }
