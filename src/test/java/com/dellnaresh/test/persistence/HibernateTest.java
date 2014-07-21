@@ -10,9 +10,13 @@ import com.dellnaresh.persistence.AgentAuthToken;
 import com.dellnaresh.persistence.AgentBody;
 import com.dellnaresh.persistence.NewHibernateUtil;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
@@ -48,51 +52,72 @@ public class HibernateTest {
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
-//    @Test
-//    public void testAgentBodyConnection(){
-//         System.out.println("Maven + Hibernate + MySQL");
-//        Session session = util.getSessionFactory().openSession();
-// 
-//        session.beginTransaction();
-//        AgentBody agent = new AgentBody();
-// 
-//       agent.setId(123);
-//       agent.setSalt("admin");
-//       agent.setCreatedDate(new Date());
-//       agent.setStatus(0);
-//       agent.setAgentType(1);
-//       agent.setOrganisation(2);
-//       session.save(agent);
-//         session.getTransaction().commit();
-//         
-//         assertNotNull(agent.getId());
-//        
-//        
-//    }
-//    @Test
-//    public void testAgentAuthTokenConnection(){
-//         System.out.println("Maven + Hibernate + MySQL");
-//        Session session = util.getSessionFactory().openSession();
-// 
-//        session.beginTransaction();
-//        AgentAuthToken token = new AgentAuthToken();
-// 
-//         token.setAgentid(123);
-//         token.setId(1);
-//         token.setToken("6339098");
-//         token.setExpiry(new Date());
-//         token.setRetryCount(0);
-//         token.setType(1);
-//         session.getTransaction().commit();
-//         
-//         assertNotNull(token.getId());
-//        
-//        
-//    }
+   
+    
+    @Test
+    public void testAgentBodyConnection(){
+         System.out.println("Maven + Hibernate + MySQL");
+        Session session = util.getSessionFactory().openSession();
+ 
+        session.beginTransaction();
+        AgentBody agent = new AgentBody();
+ 
+       agent.setId(123);
+       agent.setSalt("admin");
+       agent.setCreatedDate(new Date());
+       agent.setStatus(0);
+       agent.setAgentType(1);
+       agent.setOrganisation(2);
+       session.save(agent);
+      
+         session.getTransaction().commit();
+        listAgents();
+         assertNotNull(agent.getId());
+        
+        
+    }
+    @Test
+    public void testAgentAuthTokenConnection(){
+         System.out.println("Maven + Hibernate + MySQL");
+        Session session = util.getSessionFactory().openSession();
+ 
+        session.beginTransaction();
+        AgentAuthToken token = new AgentAuthToken();
+ 
+         token.setAgentid(123);
+         token.setId(1);
+         token.setToken("6339098");
+         token.setExpiry(new Date());
+         token.setRetryCount(0);
+         token.setType(1);
+         session.getTransaction().commit();
+         
+         assertNotNull(token.getId());
+        
+        
+    }
+    
+    /* Method to  READ all the employees */
+   public void listAgents( ){
+      Session session = NewHibernateUtil.getSessionFactory().openSession();
+      Transaction tx = null;
+      try{
+         tx = session.beginTransaction();
+         @SuppressWarnings("unchecked")
+         List<AgentBody> agents = session.createQuery("FROM AGENT_BODY").list(); 
+           Logger.getLogger("com.dellnaresh.tests").log(Level.INFO, "Agents list size", agents.size());
+          for (AgentBody agent : agents) {
+             Logger.getLogger("com.dellnaresh.tests").log(Level.INFO, "Agent Id:{0}", agent.getId());
+               Logger.getLogger("com.dellnaresh.tests").log(Level.INFO, "Agent Username:{0}", agent.getSalt());
+          }
+         tx.commit();
+      }catch (HibernateException e) {
+         if (tx!=null) {
+             tx.rollback();
+         }
+      }finally {
+         session.close(); 
+      }
+   }
     
 }
