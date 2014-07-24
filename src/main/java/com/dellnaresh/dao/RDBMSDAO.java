@@ -22,6 +22,7 @@ System.out.println("insertAgent implementation");
      session.beginTransaction();
      session.save(agent.getAgent());
      session.getTransaction().commit();
+     session.close();
 }
 @Override
 public AgentTransfer findAgent(int id) {
