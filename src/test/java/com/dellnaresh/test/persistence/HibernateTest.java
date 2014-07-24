@@ -77,7 +77,7 @@ public class HibernateTest {
          session.getTransaction().commit();
         listAgents();
          assertNotNull(agent.getId());
-        
+        session.close();
         
     }
     @Test
@@ -98,7 +98,7 @@ public class HibernateTest {
          
          assertNotNull(token.getId());
         
-        
+        session.close();
     }
     
     /* Method to  READ all the employees */
@@ -138,6 +138,7 @@ System.out.println(agent);
 AgentTransfer circleTransfer = agent.getAgentTransferObject();
 AgentDAO circleDAO = DAOFactory.getAgentDAO("RDBMS");
 circleDAO.insertAgent(circleTransfer);  
+circleDAO.deleteAgent(123);
    }
     
 }

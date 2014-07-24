@@ -6,6 +6,7 @@
 
 package com.dellnaresh.dao;
 
+import com.dellnaresh.persistence.AgentBody;
 import com.dellnaresh.persistence.NewHibernateUtil;
 import org.hibernate.Session;
 
@@ -32,6 +33,16 @@ return null;
 @Override
 public void deleteAgent(int id) {
 // deleteAgent implementation
+    System.out.println("DeleteAgent implementation");
+   
+    Session session = NewHibernateUtil.getSessionFactory().openSession();
+    
+     session.beginTransaction();
+     AgentBody ab=new AgentBody();
+     ab.setId(id);
+     session.delete(ab);
+     session.getTransaction().commit();
+     session.close();
 }
 @Override
 public void updateAgent(int id) {
