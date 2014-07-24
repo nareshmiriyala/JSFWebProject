@@ -6,6 +6,10 @@
 
 package com.dellnaresh.test.persistence;
 
+import com.dellnaresh.dao.AgentDAO;
+import com.dellnaresh.dao.AgentTransfer;
+import com.dellnaresh.dao.DAOFactory;
+import com.dellnaresh.data.Agent;
 import com.dellnaresh.persistence.AgentAuthToken;
 import com.dellnaresh.persistence.AgentBody;
 import com.dellnaresh.persistence.NewHibernateUtil;
@@ -118,6 +122,22 @@ public class HibernateTest {
       }finally {
          session.close(); 
       }
+   }
+   
+   @Test
+   public void TestAgentDAO(){
+     AgentBody ab=new AgentBody();
+     ab.setId(1234);
+       ab.setSalt("admin");
+       ab.setCreatedDate(new Date());
+       ab.setStatus(0);
+       ab.setAgentType(1);
+       ab.setOrganisation(2);
+     Agent agent = new Agent(ab);
+System.out.println(agent);
+AgentTransfer circleTransfer = agent.getAgentTransferObject();
+AgentDAO circleDAO = DAOFactory.getAgentDAO("RDBMS");
+circleDAO.insertAgent(circleTransfer);  
    }
     
 }
